@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+</head>
+<body>
+
+<h1>Add</h1>
+
+<!-- Formular til at tilføje ny turistattraktion -->
+<form th:action="@{/attractions/save}" th:object="${touristAttraction}" method="post">
+
+    <!-- Navn på turistattraktion -->
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}">
+    </div>
+
+    <!-- Beskrivelse af turistattraktion -->
+    <div>
+        <label for="description">Description:</label>
+        <input type="text" id="description" th:field="*{description}">
+    </div>
+
+    <!-- Dropdown for regioner -->
+    <div>
+        <label for="region">Region:</label>
+        <select id="region" name="region" th:field="*{region}">
+            <option th:each="region : ${regions}" th:value="${region}" th:text="${region}"></option>
+        </select>
+    </div>
+
+    <!-- Checkbokse for tags -->
+    <div>
+        <label>Tags:</label>
+        <div th:each="tag : ${tags}">
+            <input type="checkbox" th:field="*{tags}" th:value="${tag}" th:id="${tag.name()}" />
+            <label th:for="${tag.name()}" th:text="${tag.displayName}"></label>
+        </div>
+    </div>
+
+    <!-- Knapper -->
+    <div>
+
+        <button type="submit">OK</button>
+        <a href="/attractions"><button type="button">CANCEL</button></a>
+    </div>
+</form>
+
+</body>
+</html>

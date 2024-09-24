@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Attractions</title>
+
+</head>
+<body>
+<h1>Places:</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th scope="col">Place</th>
+        <th scope="col">Description</th>
+        <th scope="col">Regions</th>
+        <th scope="col"></th>
+
+    </tr>
+
+    <tbody>
+    <tr th:each="attraction : ${attractions}">
+        <td th:text="${attraction.name}"></td>
+        <td th:text="${attraction.description}"></td>
+        <td th:text="${attraction.region}"></td>
+        <td>
+            <form th:action="@{/attractions/{name}/edit(name=${attraction.name})}" method="get" target="_blank">
+                <button type="submit">Update</button>
+            </form>
+
+            <form th:action="@{/attractions/{name}/delete(name=${attraction.name})}" method="post" target="_blank">
+                <button type="submit">Delete</button>
+            </form>
+
+            <form th:action="@{/attractions/{name}/tags(name=${attraction.name})}" method="get" target="_blank">
+                <button type="submit">Tags</button>
+            </form>
+        </td>
+
+    </tr>
+
+
+    </tbody>
+
+
+</table>
+<form th:action="@{/attractions/add}" method="get" target="_blank">
+    <button type="submit">Add</button>
+    <a href="http://localhost:8080"><button type="button">Back</button></a>
+</form>
+
+</body>
+</html>
