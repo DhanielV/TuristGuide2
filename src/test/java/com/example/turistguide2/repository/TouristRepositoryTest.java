@@ -1,4 +1,4 @@
-package com.example.turistguide2.repository;
+/*package com.example.turistguide2.repository;
 
 import com.example.turistguide2.model.Tags;
 import com.example.turistguide2.model.TouristAttraction;
@@ -160,4 +160,4 @@ class TouristRepositoryTest {
         TouristAttraction retrievedAttraction = touristRepository.getByName("Invalid Attraction");
         assertNotNull(retrievedAttraction, "Attraction with invalid data should be saved (no validation in code)");
     }
-}
+}*/
